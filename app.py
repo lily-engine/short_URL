@@ -2,7 +2,6 @@ import sqlite3
 from hashids import Hashids
 from flask import Flask, render_template, request, flash, redirect, url_for
 
-
 def get_db_connection():
     conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
@@ -13,7 +12,7 @@ app.config['SECRET_KEY'] = 'this should be a secret random string'
 
 hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
 
-@app.route('/', methods=('GET', 'POST'))
+@app.route('/register_url', methods=('GET', 'POST'))
 def index():
     conn = get_db_connection()
 
@@ -21,7 +20,7 @@ def index():
         url = request.form['url']
 
         if not url:
-            flash('The URL is required!')
+            flash('URLが入力されていません')
             return redirect(url_for('index'))
 
         url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
@@ -57,11 +56,11 @@ def url_redirect(id):
         conn.close()
         return redirect(original_url)
     else:
-        flash('Invalid URL')
+        flash('無効なURLです')
         return redirect(url_for('index'))
 
-@app.route('/stats')
-def stats():
+@app.route('/urls')
+def urls():
     conn = get_db_connection()
     db_urls = conn.execute('SELECT id, created, original_url, clicks FROM urls'
                            ).fetchall()
@@ -73,4 +72,4 @@ def stats():
         url['short_url'] = request.host_url + hashids.encode(url['id'])
         urls.append(url)
 
-    return render_template('stats.html', urls=urls)
+    return render_template('urls.html', urls=urls)
