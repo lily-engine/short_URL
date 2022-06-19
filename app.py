@@ -1,6 +1,6 @@
 import sqlite3
 from hashids import Hashids
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -8,7 +8,7 @@ def get_db_connection():
     return conn
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'this should be a secret random string'
+app.config['SECRET_KEY'] = 'this should be a secret random string' # 開発用
 
 hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
 
@@ -20,7 +20,6 @@ def index():
         url = request.form['url']
 
         if not url:
-            flash('URLが入力されていません')
             return redirect(url_for('index'))
 
         url_data = conn.execute('INSERT INTO urls (original_url) VALUES (?)',
@@ -56,7 +55,6 @@ def url_redirect(id):
         conn.close()
         return redirect(original_url)
     else:
-        flash('無効なURLです')
         return redirect(url_for('index'))
 
 @app.route('/urls')
@@ -73,3 +71,6 @@ def urls():
         urls.append(url)
 
     return render_template('urls.html', urls=urls)
+
+if __name__ == '__main__':
+    app.run(debug=True)
