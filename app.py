@@ -12,7 +12,7 @@ app.config['SECRET_KEY'] = 'this should be a secret random string' # 開発用
 
 hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
 
-@app.route('/register_url', methods=('GET', 'POST'))
+@app.route('/register-url', methods=['GET', 'POST'])
 def index():
     conn = get_db_connection()
 
@@ -32,10 +32,9 @@ def index():
         short_url = request.host_url + hashid
 
         return render_template('index.html', short_url=short_url)
-
     return render_template('index.html')
 
-@app.route('/<id>')
+@app.route('/<short_url>')
 def url_redirect(id):
     conn = get_db_connection()
 
