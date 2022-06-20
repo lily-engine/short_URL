@@ -6,6 +6,12 @@
 - DBに登録されている全URLの一覧を取得する。
 - 短縮されたURLから元のURLを取得する。
 
+## 使用した環境
+- Mac OS
+- Python 3.8.9以上
+- Flask 2.0.3
+- SQLite 3.37.0
+
 ## 起動方法
 1. Python環境をアクティブにする。
     1. Pythonのパッケージ管理ツール「pip」を[インストールする](https://pip.pypa.io/en/stable/getting-started/)。
