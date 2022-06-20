@@ -17,35 +17,34 @@
         `(venv) $ pip install flask hashids`
 1. Flaskの環境変数を設定して実行する。
     1. 環境変数を設定する。  
-        `(venv) $ export FLASK_APP=app.py  
-        (venv) $ export FLASK_ENV=development`
-    1. app.pyの12,13行目にある`['SECRET_KEY']`に、秘密のランダムな文字列を設定する（セキュリティ上の理由により、公開しないよう注意する。参照：[# SECRET_KEYの発行方法](https://study-flask.readthedocs.io/ja/latest/02.html) ）。  
+        `(venv) $ export FLASK_APP=app.py`  
+        `(venv) $ export FLASK_ENV=development`
+    1. app.pyの12,13行目にある`['SECRET_KEY']`に、秘密のランダムな文字列を設定する（セキュリティ上の理由により、公開しないよう注意する。参照：[# SECRET_KEYの発行方法](https://study-flask.readthedocs.io/ja/latest/02.html#flaskr-config-py) ）。  
     1. app.pyがあるディレクトリで、Flaskを実行する。  
         `(venv) $ flask run`
 
 ## APIの使用方法
 ### 短縮URLを発行して、DBに保存する
-1. メソッド：POST
-1. URL：http://127.0.0.1:5000/register_url
-1. パラメータ：{"url":"https://github.com/"}
-1. レスポンス：{"short_url": "http://127.0.0.1:5000/q7BR"}
-1. エラー：404
+- メソッド：POST
+- URL：http://127.0.0.1:5000/register_url
+- パラメータ：{"url":"https://github.com/"}
+- レスポンス：{"short_url": "http://127.0.0.1:5000/q7BR"}
+- エラー：404
 
 ### 短縮URLの一覧を取得する
-1. メソッド：GET
-1. URL：http://127.0.0.1:5000/urls
-1. パラメータ：なし
-1. レスポンス：{"short_url": "http://127.0.0.1:5000/q7BR"}
+- メソッド：GET
+- URL：http://127.0.0.1:5000/urls
+- パラメータ：なし
+- レスポンス：{"short_url": "http://127.0.0.1:5000/q7BR"}
 
 ### 短縮URLから元のURLを取得する
-1. メソッド：GET
-1. URL：http://127.0.0.1:5000/<short_url>
-1. パラメータ：なし
-1. レスポンス：{"original_url": "https://github.com/"}
+- メソッド：GET
+- URL：http://127.0.0.1:5000/<short_url>
+- パラメータ：なし
+- レスポンス：{"original_url": "https://github.com/"}
 
 ## 主な参考資料
-1. [小学生でもわかるWebAPI入門。ゼロからWebAPIを作ってみよう](https://www.youtube.com/watch?v=6_zIN-bByB4&t=1409s)
-1. [【Flask】簡単なAPIを実装](https://amateur-engineer-blog.com/flask-api/)
-1. [FLASKとSQLITEでURL短縮サービスを作成する方法](https://ja.getdocs.org/how-to-make-a-url-shortener-with-flask-and-sqlite)
-1. [Python3.10.4 Documentation](https://docs.python.org/ja/3/library/re.html#re.match)
-1. [はじめての Flask #5 ~JSONを返すWebAPIを書こう~](https://qiita.com/nagataaaas/items/24e68a9c736aec31948e)
+- [小学生でもわかるWebAPI入門。ゼロからWebAPIを作ってみよう](https://www.youtube.com/watch?v=6_zIN-bByB4&t=1409s)
+- [【Flask】簡単なAPIを実装](https://amateur-engineer-blog.com/flask-api/)
+- [FLASKとSQLITEでURL短縮サービスを作成する方法](https://ja.getdocs.org/how-to-make-a-url-shortener-with-flask-and-sqlite)
+- [Python3.10.4 Documentation](https://docs.python.org/ja/3/library/re.html#re.match)
