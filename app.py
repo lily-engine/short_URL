@@ -10,7 +10,6 @@ def get_db_connection():
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'this should be a secret random string' # 開発用
-
 hashids = Hashids(min_length=4, salt=app.config['SECRET_KEY'])
 
 @app.route('/register-url', methods=['POST'])
