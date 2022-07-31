@@ -1,6 +1,9 @@
 # 短縮URLの発行API
 短縮URLを発行できるAPIの実装例です。
 
+APIの開発方法については以下の記事で解説しました。
+- [【初めてのAPI】短縮URLを発行するAPIの開発【Flask + SQLite】](https://qiita.com/lily_engine/items/6dc3b3d733b40e4b5f6a)
+
 ## 機能
 - ユーザーから渡されたURLに紐づく短縮URLを発行して、DBに保存する。
 - DBに登録されている全URLの一覧を取得する。
