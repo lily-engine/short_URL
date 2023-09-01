@@ -1,5 +1,5 @@
 # 短縮URLの発行API
-短縮URLを発行できるAPIの実装例です。
+短縮URLを発行できるAPIの実装です。
 
 開発手順については以下の記事で解説しました。
 - [【初めてのAPI】短縮URLを発行するAPIの開発【Flask + SQLite】](https://qiita.com/lily_engine/items/6dc3b3d733b40e4b5f6a)
